@@ -24,7 +24,6 @@ import {
     Legend,
     Title,
     Tooltip,
-    Utils,
 } from "chart.js";
 
 Chart.register(
