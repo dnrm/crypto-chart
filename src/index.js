@@ -55,7 +55,7 @@ import "chartjs-adapter-moment";
 
 let type = "line";
 const ctx = document.getElementById("chart").getContext("2d");
-let currency = prompt("Which currency?");
+let currency = prompt("Which currency? (bitcoin or ethereum)");
 let data = [];
 let labels = [];
 
