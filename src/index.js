@@ -59,7 +59,7 @@ let currency = prompt("Which currency? (bitcoin or ethereum)");
 let data = [];
 let labels = [];
 
-function main() {
+(async () => {
     axios
         .get(`https://api.coincap.io/v2/assets/${currency}/history?interval=d1`)
         .then((r) => {
@@ -69,33 +69,31 @@ function main() {
             });
 
             let chart = new Chart(ctx, {
-              type: type,
-              data: {
-                  labels: labels,
-                  datasets: [
-                      {
-                          label: `${currency} Price (USD)`,
-                          data: data,
-                          backgroundColor: "rgba(86, 98, 70, 0.5)",
-                          borderColor: "rgba(86, 98, 70, 1)",
-                          borderWidth: 1,
-                          fill: true,
-                      },
-                  ],
-              },
-              options: {
-                  scales: {
-                      x: {
-                          type: "time",
-                          ticks: {
-                              autoSkip: true,
-                              maxTicksLimit: 20,
-                          },
-                      },
-                  },
-              },
-          });
+                type: type,
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: `${currency} Price (USD)`,
+                            data: data,
+                            backgroundColor: "rgba(86, 98, 70, 0.5)",
+                            borderColor: "rgba(86, 98, 70, 1)",
+                            borderWidth: 1,
+                            fill: true,
+                        },
+                    ],
+                },
+                options: {
+                    scales: {
+                        x: {
+                            type: "time",
+                            ticks: {
+                                autoSkip: true,
+                                maxTicksLimit: 20,
+                            },
+                        },
+                    },
+                },
+            });
         });
-}
-
-main();
+})
